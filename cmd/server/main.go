@@ -16,7 +16,7 @@ func main() {
 
 	fs := http.FileServer(http.Dir("emblems"))
 	router.Handle("/emblems/{name}.png", http.StripPrefix("/emblems/", fs)).Methods("GET", "OPTIONS")
-	router.Handle("/emblems/{make}", server.NewHandler()).Queries("make", "{make}").Methods("GET", "OPTIONS")
+	router.Handle("/emblems/{make}", server.NewHandler()).Methods("GET", "OPTIONS")
 
 	origins := handlers.AllowedOrigins([]string{"*"})
 	methods := handlers.AllowedMethods([]string{"GET", "OPTIONS"})
